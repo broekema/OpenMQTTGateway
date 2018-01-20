@@ -41,12 +41,13 @@
 
 /*----------------------------USER PARAMETERS-----------------------------*/
 /*-------------DEFINE YOUR MQTT PARAMETERS BELOW----------------*/
-#define TEMPBMEC  "home/CLIMAtoMQTT/bme/tempc"
-#define TEMPBMEF  "home/CLIMAtoMQTT/bme/tempf"
-#define HUMBME   "home/CLIMAtoMQTT/bme/hum"
-#define PRESSBME   "home/CLIMAtoMQTT/bme/pa"
-#define ALTIBMEM   "home/CLIMAtoMQTT/bme/altim"
-#define ALTIBMEFT   "home/CLIMAtoMQTT/bme/altift"
+#define BME       "/bme/"
+#define TEMPBMEC  MQTT_ROOT  Gateway_Name  BME "tempc"
+#define TEMPBMEF  MQTT_ROOT  Gateway_Name  BME "tempf"
+#define HUMBME    MQTT_ROOT  Gateway_Name  BME "hum"
+#define PRESSBME  MQTT_ROOT  Gateway_Name  BME "pa"
+#define ALTIBMEM  MQTT_ROOT  Gateway_Name  BME "altim"
+#define ALTIBMEFT MQTT_ROOT  Gateway_Name  BME "altift"
 
 //Time used to wait for an interval before resending measured values
 unsigned long timebme280 = 0;

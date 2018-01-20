@@ -4,7 +4,7 @@
    Act as a wifi or ethernet gateway between your 433mhz/infrared IR signal and a MQTT broker 
    Send and receiving command by MQTT
  
-   This files exposes light level measured by a TSL2651 module
+   This files exposes light level measured by a MAX44009 module
    Heavily inspired by the driver for the BH1750 light sensor
 
    Copyright: (c) Chris Broekema
@@ -27,24 +27,27 @@
    Connection Schemata:
    --------------------
 
-   TSL2561 ------> Arduino Uno ----------> ESP8266
+   MAX44009 ----> Arduino Uno ----------> ESP8266
    ==============================================
    Vcc ---------> 3.3V -----------------> Vu (3.3V)
    GND ---------> GND ------------------> GND
    SCL ---------> Pin A5 ---------------> D1
    SDA ---------> Pin A4 ---------------> D2
-   ADD ---------> N/C (Not Connected) --> N/C (Not Connected)
 
 */
-#define tsl2561_always true              // if false only send current value if it has changed 
-#define TimeBetweenReadingtsl2561 30000  
+
+
+#define ZsensorMAX44009
+
+#define max44009_always true              // if false only send current value if it has changed 
+#define TimeBetweenReadingMAX44009 30000  
 /*----------------------------USER PARAMETERS-----------------------------*/
 /*-------------DEFINE YOUR MQTT PARAMETERS BELOW----------------*/
-#define TSL   "/tsl/"
+#define MAX   "/max44009/"
 #define LUX      MQTT_ROOT  Gateway_Name  TSL  "lux"
 #define FTCD     MQTT_ROOT  Gateway_Name  TSL  "ftcd"
 #define WATTSM2  MQTT_ROOT  Gateway_Name  TSL  "wattsm2"
 
 //Time used to wait for an interval before resending measured values
-unsigned long timetsl2561 = 0;
-//int TSL2561_i2c_addr = 0x37; // Light Sensor I2C Address (Set in Adafruit library)
+unsigned long timemax44009 = 0;
+int MAX44009_i2c_addr = 0x4a; // Light Sensor I2C Address (Set in Adafruit library)
